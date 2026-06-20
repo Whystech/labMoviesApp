@@ -11,8 +11,9 @@ import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
-import img from '../../images/film-poster-placeholder.png';
-import { BaseMovieProps } from "../../types/interfaces"; 
+import img from "../../images/film-poster-placeholder.png";
+import { BaseMovieProps } from "../../types/interfaces";
+import { Link } from "react-router-dom";
 
 const styles = {
   card: { maxWidth: 345 },
@@ -23,8 +24,6 @@ const styles = {
 };
 
 const MovieCard: React.FC<BaseMovieProps> = (movie) => {
- 
-
   return (
     <Card sx={styles.card}>
       <CardHeader title={movie.title} />
@@ -53,15 +52,17 @@ const MovieCard: React.FC<BaseMovieProps> = (movie) => {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" >
+        <IconButton aria-label="add to favorites">
           <FavoriteIcon color="primary" fontSize="large" />
         </IconButton>
-        <Button variant="outlined" size="medium" color="primary">
-          More Info ...
-        </Button>
+        <Link to={`/movies/${movie.id}`}>
+          <Button variant="outlined" size="medium" color="primary">
+            More Info ...
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   );
-}
+};
 
 export default MovieCard;

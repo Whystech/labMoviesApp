@@ -21,3 +21,9 @@ export interface BaseMovieProps {
     movies: BaseMovieProps[];
   }   
 
+    export interface MovieDetailsProps extends BaseMovieProps {
+    genres: {
+      id: number;
+      name: string;
+    }[];
+  }

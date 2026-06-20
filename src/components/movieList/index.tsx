@@ -1,5 +1,5 @@
 import React from "react";
-import Movie from "../movieCard/";
+import Movie from "../movieCard";
 import Grid from "@mui/material/Grid";
 import { BaseMovieListProps } from "../../types/interfaces";
 

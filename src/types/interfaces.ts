@@ -55,6 +55,9 @@ export interface FilterMoviesCardProps {
   genreFilter: string;
 }
 
+export interface MovieListPageTemplateProps extends BaseMovieListProps {
+  title: string;
+}
 
 
 export type FilterOption = "title" | "genre";

@@ -3,7 +3,6 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import SortIcon from "@mui/icons-material/Sort";
@@ -14,6 +13,8 @@ import { useState } from "react";
 import { ChangeEvent } from "react";
 import { SelectChangeEvent } from "@mui/material/Select";
 import { FilterOption } from "../../types/interfaces";
+import { FilterMoviesCardProps } from "../../types/interfaces";
+import { MenuItem } from "@mui/material";
 
 const styles = {
   root: {
@@ -28,14 +29,10 @@ const styles = {
   },
 };
 
-interface FilterMoviesCardProps {
-  titleFilter: string;
-  genreFilter: string;
-}
-
 const FilterMoviesCard: React.FC<FilterMoviesCardProps> = ({
   titleFilter,
   genreFilter,
+  onUserInput,
 }) => {
   const [genres, setGenres] = useState([{ id: "0", name: "All" }]);
 
@@ -48,18 +45,18 @@ const FilterMoviesCard: React.FC<FilterMoviesCardProps> = ({
         return json.genres;
       })
       .then((apiGenres) => {
-        setGenres([genres[0], ...apiGenres]);
-      });
+        setGenres((prev) => [prev[0], ...apiGenres]);
+      }); 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChange = (
-    e: SelectChangeEvent,
+    e:  SelectChangeEvent,
     type: FilterOption,
     value: string,
   ) => {
     e.preventDefault();
-    // Completed later
+    onUserInput(type, value);
   };
 
   const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -94,7 +91,13 @@ const FilterMoviesCard: React.FC<FilterMoviesCardProps> = ({
               id="genre-select"
               value={genreFilter}
               onChange={handleGenreChange}
-            ></Select>
+            >
+              {genres.map((g) => (
+                <MenuItem key={g.id} value={g.id} /* needed to map genres list - both key and value need to be id in order to work properly */ > 
+                  {g.name}
+                </MenuItem>
+              ))}
+            </Select>
           </FormControl>
         </CardContent>
       </Card>

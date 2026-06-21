@@ -48,4 +48,14 @@ export interface MoviePageProps {
   images: MovieImage[];
 }
 
+export interface FilterMoviesCardProps {
+  onUserInput: (f: FilterOption, s: string)  => void;
+  titleFilter: string;
+  genreFilter: string;
+}
+
+
+export type FilterOption = "title" | "genre";
+
+
 

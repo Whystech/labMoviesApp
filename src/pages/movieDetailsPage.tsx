@@ -4,10 +4,11 @@ import MovieDetails from "../components/movieDetails";
 import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import { MoviePageProps} from "../types/interfaces";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import { MovieDetailsProps } from "../types/interfaces";
+import { MovieImage } from "../types/interfaces";
 
 const styles = {
   imageListRoot: {

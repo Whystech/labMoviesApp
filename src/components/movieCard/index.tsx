@@ -25,7 +25,7 @@ const styles = {
   card: { maxWidth: 345 },
   media: { height: 500 },
   avatar: {
-    backgroundColor: "rgb(255, 0, 0)",
+  backgroundColor: "rgb(255, 0, 0)",
   },
 };
 
@@ -41,7 +41,7 @@ const MovieCard: React.FC<MovieCardProps> =({movie, selectFavourite}) => {
         avatar={
           movie.favourite ? (
             <Avatar sx={styles.avatar}>
-              <FavoriteIcon />
+              <FavoriteIcon />  
             </Avatar>
           ) : null
         }

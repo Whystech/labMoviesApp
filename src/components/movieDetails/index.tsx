@@ -7,6 +7,7 @@ import StarRate from "@mui/icons-material/StarRate";
 import Typography from "@mui/material/Typography";
 import { MovieDetailsProps } from "../../types/interfaces";
 
+
 const styles = {
   chipSet: {
     display: "flex",
@@ -22,9 +23,16 @@ const styles = {
   },
 };
 
-const MovieDetails: React.FC<MovieDetailsProps> = (movie) => {
+const MovieDetails: React.FC<MovieDetailsProps> = ( movie ) => {
+
   return (
     <>
+          <Typography variant="h5" component="p">
+            {movie.title}{" "}
+            
+          </Typography>
+      
+  
       <Typography variant="h5" component="h3">
         Overview
       </Typography>

@@ -77,4 +77,5 @@ export default {
     video: false,
     vote_average: 7,
     vote_count: 9692,
+     favourite: false
   };

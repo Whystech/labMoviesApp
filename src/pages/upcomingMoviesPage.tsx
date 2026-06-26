@@ -52,7 +52,7 @@ const UpcomingMoviePage: React.FC = () => {
   // Redundant, but necessary to avoid app crashing.
   const playlist = movies.filter(m => m.playlist)
   localStorage.setItem("playlist", JSON.stringify(playlist));
- const addToPLaylist = (movieId: number) => true;
+  const addToPLaylist = (movieId: number) => true;
 
   return (
     <>

@@ -56,7 +56,7 @@ const MoviesContextProvider: React.FC<React.PropsWithChildren> = ({ children }) 
     }, []);
 
         const removeFromPlaylist = useCallback((movie: BaseMovieProps) => {
-        setFavourites((prevFavourites) => prevFavourites.filter((mId) => mId !== movie.id));
+        setPlaylist((prevPlaylist) => prevPlaylist.filter((mId) => mId !== movie.id));
     }, []);
 
     return (

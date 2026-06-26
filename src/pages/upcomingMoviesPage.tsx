@@ -52,12 +52,12 @@ const UpcomingMoviePage: React.FC = () => {
   // Redundant, but necessary to avoid app crashing.
   const favourites = movies.filter(m => m.favourite)
   localStorage.setItem("favourites", JSON.stringify(favourites));
-  const addToFavourites = (movieId: number) => true;
+ gitr  const addToFavourites = (movieId: number) => true;
 
   return (
     <>
       <PageTemplate
-        title="Discover Movies"
+        title="Upcoming Movies"
         movies={displayedMovies}
         action={(movie: BaseMovieProps) => {
           return <AddToFavouritesIcon {...movie} />
@@ -71,4 +71,4 @@ const UpcomingMoviePage: React.FC = () => {
     </>
   );
 };
-export default UpcomingMoviePage;
+export default UpcomingMoviePage; 

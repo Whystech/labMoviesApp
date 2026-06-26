@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import { MovieDetailsProps } from "../../types/interfaces";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { FavoriteBorderOutlined } from "@mui/icons-material";
 
 const styles = {
   root: {
@@ -21,7 +20,7 @@ const styles = {
 
 const MovieHeader: React.FC<MovieDetailsProps> = (movie) => {
   const favList = JSON.parse(localStorage.getItem("favourites") || "[]");
-  const isFavourite = favList.some((f) => f.id === movie.id); //because the localStorage is storing all movie object not just its id
+  const isFavourite = favList.some(f => f.id === movie.id); //because the localStorage is storing all movie objects and not just its id so I need to match the current movie's id with the id's from the list
 
   return (
     <Paper component="div" sx={styles.root}>
@@ -37,7 +36,7 @@ const MovieHeader: React.FC<MovieDetailsProps> = (movie) => {
         </a>
 
         <FavoriteIcon
-          color={isFavourite ? "error" : "disabled"}
+          color={isFavourite ? "error" : "disabled"} //if logic
           fontSize="large"
         />
 

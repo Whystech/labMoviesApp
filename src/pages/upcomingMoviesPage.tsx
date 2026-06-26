@@ -7,8 +7,8 @@ import { genreFilter } from "../components/movieFilterUI";
 import Spinner from "../components/spinner";
 import { UpcomingMovies } from '../types/interfaces';
 import { useQuery} from "react-query";
-import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
 import MovieFilterUI from "../components/movieFilterUI";
+import AddToPlaylistIcon from '../components/cardIcons/addToPlaylist';
 
 
 const titleFiltering = {
@@ -50,9 +50,9 @@ const UpcomingMoviePage: React.FC = () => {
   const displayedMovies = filterFunction(movies);
 
   // Redundant, but necessary to avoid app crashing.
-  const favourites = movies.filter(m => m.favourite)
-  localStorage.setItem("favourites", JSON.stringify(favourites));
- gitr  const addToFavourites = (movieId: number) => true;
+  const playlist = movies.filter(m => m.playlist)
+  localStorage.setItem("playlist", JSON.stringify(playlist));
+ const addToPLaylist = (movieId: number) => true;
 
   return (
     <>
@@ -60,7 +60,7 @@ const UpcomingMoviePage: React.FC = () => {
         title="Upcoming Movies"
         movies={displayedMovies}
         action={(movie: BaseMovieProps) => {
-          return <AddToFavouritesIcon {...movie} />
+          return <AddToPlaylistIcon {...movie} />
         }}
       />
       <MovieFilterUI

@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
+import { PlaylistAdd } from "@mui/icons-material";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
 import img from "../../images/film-poster-placeholder.png";
@@ -16,9 +17,8 @@ import Avatar from "@mui/material/Avatar";
 import { BaseMovieProps } from "../../types/interfaces";
 import { MoviesContext } from "../../contexts/moviesContext";
 
-
-
-interface MovieCardProps { //Removed selectFavourite property from interface
+interface MovieCardProps {
+  //Removed selectFavourite property from interface
   movie: BaseMovieProps;
 }
 
@@ -35,18 +35,18 @@ interface MovieCardProps {
   action: (m: BaseMovieProps) => React.ReactNode;
 }
 
-
 const MovieCard: React.FC<MovieCardProps> = ({ movie, action }) => {
   const { favourites, addToFavourites } = useContext(MoviesContext);
+  const { playlist, addToPlaylist } = useContext(MoviesContext);
 
-  const isFavourite = favourites.find((id) => id === movie.id) ? true : false;//NEW
-
+  const isFavourite = favourites.find((id) => id === movie.id) ? true : false; //NEW
+  const isPlaylist = playlist.find((id) => id === movie.id) ? true : false; //NEW
 
   return (
     <Card sx={styles.card}>
       <CardHeader
         avatar={
-          isFavourite ? (   //CHANGED
+          isFavourite ? ( //CHANGED
             <Avatar sx={styles.avatar}>
               <FavoriteIcon />
             </Avatar>
@@ -84,12 +84,19 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, action }) => {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-       {action(movie)}
+        {action(movie)}
         <Link to={`/movies/${movie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
         </Link>
+        <Button
+            onClick={() => addToPlaylist(movie)}
+            startIcon={<PlaylistAdd />}
+            color={isPlaylist ? "secondary" : "primary"}
+          >
+            {isPlaylist ? "In Playlist" : "Add to Playlist"}
+          </Button>
       </CardActions>
     </Card>
   );
